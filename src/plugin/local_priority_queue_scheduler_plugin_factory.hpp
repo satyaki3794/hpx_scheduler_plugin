@@ -1,4 +1,4 @@
-//  Copyright (c) 2016 Hartmut Kaiser
+//  Copyright (c) 2016 Satyaki Upadhyay
 //
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying
 //  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -37,8 +37,11 @@ namespace hpx{ namespace threads { namespace policies
         ///          supported by this factory
         scheduler_base* create()
         {
-            if (is_enabled_)
-                return new SchedulerPlugin();
+            if (is_enabled_){
+                typedef hpx::threads::policies::local_priority_queue_scheduler<> sh;
+                typedef sh::init_parameter_type init;
+                return new sh(init());
+            }
             return 0;
         }
 
@@ -54,11 +57,9 @@ namespace hpx{ namespace threads { namespace policies
 /// Hpx.Plugin.
 #define HPX_REGISTER_SCHEDULER_PLUGIN_FACTORY(SchedulerPlugin, pluginname)                                            \
     HPX_REGISTER_SCHEDULER_PLUGIN_FACTORY_BASE(                                                                       \
-        hpx::threads::policies::local_priority_queue_scheduler_plugin_factory<SchedulerPlugin>,                       \
-        pluginname)                                                                                                   \
+        hpx::threads::policies::local_priority_queue_scheduler_plugin_factory<SchedulerPlugin>, pluginname)           \
     HPX_DEF_UNIQUE_PLUGIN_NAME(                                                                                       \
-        hpx::threads::policies::local_priority_queue_scheduler_plugin_factory<SchedulerPlugin>,                       \
-        pluginname)                                                                                                   \
+        hpx::threads::policies::local_priority_queue_scheduler_plugin_factory<SchedulerPlugin>, pluginname)           \
     template struct hpx::threads::policies::local_priority_queue_scheduler_plugin_factory<SchedulerPlugin>;           \
     HPX_REGISTER_PLUGIN_REGISTRY_2(SchedulerPlugin, pluginname)                                                       \
 /**/

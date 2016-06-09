@@ -11,6 +11,6 @@
 HPX_REGISTER_SCHEDULER_PLUGIN_MODULE_DYNAMIC();
 
 // Add this once for each supported plugin type
-HPX_REGISTER_SCHEDULER_PLUGIN_FACTORY(hpx::threads::policies::local_priority_queue_scheduler
-								, local_priority_queue_scheduler);
+typedef hpx::threads::policies::local_priority_queue_scheduler<> sh;
+HPX_REGISTER_SCHEDULER_PLUGIN_FACTORY(sh, local_priority_queue_scheduler);
 
