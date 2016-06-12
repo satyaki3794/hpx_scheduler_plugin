@@ -10,3 +10,10 @@ hpx_scheduler_plugin
 
 Repository for GSoC 2016 project to create HPX plugins for schedulers.
 
+**Instructions for use**
+
+cd $SCHEDULER_PLUGIN_HOME_DIR  
+cmake -DHPX_DIR=$HPX_INSTALL_DIR .  
+make  
+cp lib/hpx/libloaded_plugin.so $HPX_BUILD_DIR/lib/hpx/libhpx_loaded_plugin.so  
+./bin/load_plugin
