@@ -37,10 +37,10 @@ endif()
 include_directories(src)
 
 # add executable
-# add_hpx_executable(load_plugin
-#     SOURCES src/load_plugin.cpp
-#     HEADERS src/example_plugin_factory_base.hpp
-#             src/scheduler_base.hpp)
+add_hpx_executable(load_plugin
+    SOURCES src/load_plugin.cpp
+    HEADERS src/scheduler_plugin_factory_base.hpp
+            src/scheduler_base.hpp)
 
 # add plugin
 set(CMAKE_DEBUG_POSTFIX ${HPX_DEBUG_POSTFIX})

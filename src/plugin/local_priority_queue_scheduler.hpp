@@ -15,7 +15,6 @@
 #include <hpx/runtime/threads/topology.hpp>
 #include <hpx/runtime/threads/policies/thread_queue.hpp>
 #include <hpx/runtime/threads/policies/affinity_data.hpp>
-#include <hpx/runtime/threads/policies/scheduler_base.hpp>
 
 #include <boost/atomic.hpp>
 #include <boost/exception_ptr.hpp>
@@ -26,6 +25,7 @@
 #include <vector>
 
 #include <hpx/config/warnings_prefix.hpp>
+#include "../scheduler_base.hpp"
 
 // TODO: add branch prediction and function heat
 
@@ -65,6 +65,7 @@ namespace hpx { namespace threads { namespace policies
         enum { max_thread_count = 1000 };
 
     public:
+
         typedef boost::mpl::false_ has_periodic_maintenance;
 
         typedef thread_queue<
@@ -162,6 +163,11 @@ namespace hpx { namespace threads { namespace policies
                 delete queues_[i];
             for (std::size_t i = 0; i != high_priority_queues_.size(); ++i)
                 delete high_priority_queues_[i];
+        }
+
+        void test_scheduler(){
+         
+            std::cout<<"Local priority queue scheduler loaded.\n";
         }
 
         bool numa_sensitive() const { return numa_sensitive_ != 0; }

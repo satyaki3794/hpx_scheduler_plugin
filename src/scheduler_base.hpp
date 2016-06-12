@@ -1,4 +1,4 @@
-//  Copyright (c) 2007-2015 Hartmut Kaiser
+//  Copyright (c) 2007-2015 Hartmut Kaiser, Satyaki Upadhyay
 //
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying
 //  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -86,6 +86,8 @@ namespace hpx { namespace threads { namespace policies
         virtual ~scheduler_base()
         {
         }
+
+        virtual void test_scheduler() = 0;
 
         threads::mask_cref_type get_pu_mask(topology const& topology,
             std::size_t num_thread) const

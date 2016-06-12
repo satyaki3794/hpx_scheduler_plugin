@@ -1,4 +1,4 @@
-//  Copyright (c) 2016 Hartmut Kaiser
+//  Copyright (c) 2016 Hartmut Kaiser, Satyaki Upadhyay
 //
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying
 //  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -15,7 +15,7 @@
 #include <hpx/hpx_main.hpp>
 #include <hpx/hpx.hpp>
 
-#include "example_plugin_factory_base.hpp"
+#include "scheduler_plugin_factory_base.hpp"
 
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
@@ -116,20 +116,20 @@ bool load_plugins(hpx::util::section& ini)
         hpx::util::plugin::dll module(lib_path.string(), HPX_MANGLE_STRING(component));
 
         // get the factory
-        hpx::util::plugin::plugin_factory<
-                example::example_plugin_factory_base
-            > pf(module, "example_factory");
+        typedef hpx::threads::policies::scheduler_plugin_factory_base fb;
+        hpx::util::plugin::plugin_factory<fb> pf(module, "scheduler_factory");
 
         try {
             // create the plugin factory object, if not disabled
-            std::shared_ptr<example::example_plugin_factory_base> factory (
+            std::shared_ptr<fb> factory (
                 pf.create(instance, glob_ini, plugin_ini, true));
 
             // use factory to create an instance of the plugin
-            std::shared_ptr<example::example_plugin_base> plugin(factory->create());
+            std::shared_ptr<hpx::threads::policies::scheduler_base
+                > plugin(factory->create());
 
             // now use plugin to do something useful
-            plugin->do_something_useful();
+            plugin->test_scheduler();
         }
         catch(...) {
             // different type of factory (not "example_factory"), ignore here
