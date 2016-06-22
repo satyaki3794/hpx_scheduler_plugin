@@ -136,10 +136,10 @@ bool test_local_priority_scheduler(hpx::util::section& ini)
             typedef hpx::threads::policies::local_priority_queue_scheduler<> lpq;
             hpx::threads::policies::scheduler_base* base = plugin.get();
             HPX_TEST(dynamic_cast<lpq*>(base) != NULL);
-std::cout<<"yolo\n";
         }
         catch(...) {
             // different type of factory (not "example_factory"), ignore here
+            HPX_TEST(false);
         }
     }
     return true;
