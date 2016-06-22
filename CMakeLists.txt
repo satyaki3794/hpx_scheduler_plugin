@@ -42,6 +42,13 @@ add_hpx_executable(load_plugin
     HEADERS src/scheduler_plugin_factory_base.hpp
             src/scheduler_base.hpp)
 
+
+# add executable for unit test
+add_hpx_executable(local_priority_scheduler_test
+     SOURCES tests/local_priority_scheduler_test.cpp
+     HEADERS src/scheduler_plugin_factory_base.hpp
+            src/scheduler_base.hpp)
+
 # add plugin
 set(CMAKE_DEBUG_POSTFIX ${HPX_DEBUG_POSTFIX})
 add_hpx_library(loaded_plugin
