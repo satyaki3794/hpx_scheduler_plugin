@@ -55,7 +55,7 @@ namespace hpx{ namespace threads { namespace policies
 ///////////////////////////////////////////////////////////////////////////////
 /// This macro is used create and to register a minimal example factory with
 /// Hpx.Plugin.
-#define HPX_REGISTER_SCHEDULER_PLUGIN_FACTORY(SchedulerPlugin, pluginname)                                            \
+#define HPX_REGISTER_LPQ_SCHEDULER_PLUGIN_FACTORY(SchedulerPlugin, pluginname)                                            \
     HPX_REGISTER_SCHEDULER_PLUGIN_FACTORY_BASE(                                                                       \
         hpx::threads::policies::local_priority_queue_scheduler_plugin_factory<SchedulerPlugin>, pluginname)           \
     HPX_DEF_UNIQUE_PLUGIN_NAME(                                                                                       \

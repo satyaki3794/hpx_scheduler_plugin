@@ -3,8 +3,8 @@
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying
 //  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-#if !defined(HPX_LOCAL_PRIORITY_SCHEDULER_PLUGIN_FACTORY)
-#define HPX_LOCAL_PRIORITY_SCHEDULER_PLUGIN_FACTORY
+#if !defined(HPX_LOCAL_SCHEDULER_PLUGIN_FACTORY)
+#define HPX_LOCAL_SCHEDULER_PLUGIN_FACTORY
 
 #include <hpx/config.hpp>
 #include <hpx/plugins/unique_plugin_name.hpp>
@@ -55,7 +55,7 @@ namespace hpx{ namespace threads { namespace policies
 ///////////////////////////////////////////////////////////////////////////////
 /// This macro is used create and to register a minimal example factory with
 /// Hpx.Plugin.
-#define HPX_REGISTER_SCHEDULER_PLUGIN_FACTORY(SchedulerPlugin, pluginname)                                            \
+#define HPX_REGISTER_LQ_SCHEDULER_PLUGIN_FACTORY(SchedulerPlugin, pluginname)                                            \
     HPX_REGISTER_SCHEDULER_PLUGIN_FACTORY_BASE(                                                                       \
         hpx::threads::policies::local_queue_scheduler_plugin_factory<SchedulerPlugin>, pluginname)           \
     HPX_DEF_UNIQUE_PLUGIN_NAME(                                                                                       \
