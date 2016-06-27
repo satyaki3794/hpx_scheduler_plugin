@@ -43,9 +43,27 @@ add_hpx_executable(load_plugin
             src/scheduler_base.hpp)
 
 
-# add executable for unit test
-add_hpx_executable(local_priority_scheduler_test
-     SOURCES tests/local_priority_scheduler_test.cpp
+# add executable for unit test of local priority queue scheduler plugin
+add_hpx_executable(local_priority_queue_scheduler_test
+     SOURCES tests/local_priority_queue_scheduler_test.cpp
+     HEADERS src/scheduler_plugin_factory_base.hpp
+            src/scheduler_base.hpp)
+
+# add executable for unit test of local queue scheduler plugin
+add_hpx_executable(local_queue_scheduler_test
+     SOURCES tests/local_queue_scheduler_test.cpp
+     HEADERS src/scheduler_plugin_factory_base.hpp
+            src/scheduler_base.hpp)
+
+# add executable for unit test of static priority queue scheduler plugin
+add_hpx_executable(static_priority_queue_scheduler_test
+     SOURCES tests/static_priority_queue_scheduler_test.cpp
+     HEADERS src/scheduler_plugin_factory_base.hpp
+            src/scheduler_base.hpp)
+
+# add executable for unit test of static queue scheduler plugin
+add_hpx_executable(static_queue_scheduler_test
+     SOURCES tests/static_queue_scheduler_test.cpp
      HEADERS src/scheduler_plugin_factory_base.hpp
             src/scheduler_base.hpp)
 

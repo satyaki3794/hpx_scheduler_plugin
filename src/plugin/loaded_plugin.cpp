@@ -27,6 +27,5 @@ HPX_REGISTER_LQ_SCHEDULER_PLUGIN_FACTORY(l_sh, local_queue_scheduler);
 typedef hpx::threads::policies::static_priority_queue_scheduler<> sp_sh;
 HPX_REGISTER_SPQ_SCHEDULER_PLUGIN_FACTORY(sp_sh, static_priority_queue_scheduler);
 
-
 typedef hpx::threads::policies::static_queue_scheduler<> s_sh;
 HPX_REGISTER_SQ_SCHEDULER_PLUGIN_FACTORY(s_sh, static_queue_scheduler);
