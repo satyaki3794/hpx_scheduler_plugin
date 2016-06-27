@@ -57,4 +57,6 @@ add_hpx_library(loaded_plugin
     HEADERS src/plugin/local_priority_queue_scheduler.hpp
     		src/plugin/local_priority_queue_scheduler_plugin_factory.hpp
         src/plugin/local_queue_scheduler.hpp
-        src/plugin/local_queue_scheduler_plugin_factory.hpp)
+        src/plugin/local_queue_scheduler_plugin_factory.hpp
+        src/plugin/static_priority_queue_scheduler.hpp
+        src/plugin/static_priority_queue_scheduler_plugin_factory.hpp)
