@@ -79,4 +79,8 @@ add_hpx_library(loaded_plugin
         src/plugin/static_priority_queue_scheduler.hpp
         src/plugin/static_priority_queue_scheduler_plugin_factory.hpp
         src/plugin/static_queue_scheduler.hpp
-        src/plugin/static_queue_scheduler_plugin_factory.hpp)
+        src/plugin/static_queue_scheduler_plugin_factory.hpp
+        src/plugin/hierarchy_scheduler.hpp
+        src/plugin/hierarchy_scheduler_plugin_factory.hpp
+        src/plugin/periodic_priority_queue_scheduler.hpp
+        src/plugin/periodic_priority_queue_scheduler_plugin_factory.hpp)

@@ -11,6 +11,10 @@
 #include "static_priority_queue_scheduler_plugin_factory.hpp"
 #include "static_queue_scheduler.hpp"
 #include "static_queue_scheduler_plugin_factory.hpp"
+#include "hierarchy_scheduler.hpp"
+#include "hierarchy_scheduler_plugin_factory.hpp"
+#include "periodic_priority_queue_scheduler.hpp"
+#include "periodic_priority_queue_scheduler_plugin_factory.hpp"
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -29,3 +33,9 @@ HPX_REGISTER_SPQ_SCHEDULER_PLUGIN_FACTORY(sp_sh, static_priority_queue_scheduler
 
 typedef hpx::threads::policies::static_queue_scheduler<> s_sh;
 HPX_REGISTER_SQ_SCHEDULER_PLUGIN_FACTORY(s_sh, static_queue_scheduler);
+
+typedef hpx::threads::policies::hierarchy_scheduler<> h_sh;
+HPX_REGISTER_HIERARCHY_SCHEDULER_PLUGIN_FACTORY(h_sh, hierarchy_scheduler);
+
+typedef hpx::threads::policies::periodic_priority_queue_scheduler<> pp_sh;
+HPX_REGISTER_PPQ_SCHEDULER_PLUGIN_FACTORY(pp_sh, periodic_priority_queue_scheduler);
