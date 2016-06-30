@@ -16,8 +16,8 @@
 #include <hpx/hpx.hpp>
 
 #include "../src/scheduler_plugin_factory_base.hpp"
-#include "../src/plugin/static_priority_queue_scheduler.hpp"
-#include "../src/plugin/static_priority_queue_scheduler_plugin_factory.hpp"
+#include "../src/plugin/hierarchy_scheduler.hpp"
+#include "../src/plugin/hierarchy_scheduler_plugin_factory.hpp"
 
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
@@ -30,7 +30,7 @@
 #include <hpx/util/lightweight_test.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
-bool test_static_priority_queue_scheduler(hpx::util::section& ini)
+bool test_hierarchy_scheduler(hpx::util::section& ini)
 {
     // load all components as described in the configuration information
     if (!ini.has_section("hpx.plugins"))
@@ -132,10 +132,10 @@ bool test_static_priority_queue_scheduler(hpx::util::section& ini)
             std::shared_ptr<hpx::threads::policies::scheduler_base
                 > plugin(factory->create());
 
-            // now test for static priority queue scheduler plugin
-            typedef hpx::threads::policies::static_priority_queue_scheduler<> spq;
+            // now test for hierarchy scheduler plugin
+            typedef hpx::threads::policies::hierarchy_scheduler<> h_sh;
             hpx::threads::policies::scheduler_base* base = plugin.get();
-            HPX_TEST(dynamic_cast<spq*>(base) != NULL);
+            HPX_TEST(dynamic_cast<h_sh*>(base) != NULL);
         }
         catch(...) {
             // different type of factory (not "example_factory"), ignore here
@@ -148,7 +148,7 @@ bool test_static_priority_queue_scheduler(hpx::util::section& ini)
 int main(int argc, char* argv[])
 {
     // load plugins based on registry and configuration information
-    test_static_priority_queue_scheduler(hpx::get_runtime().get_config());
+    test_hierarchy_scheduler(hpx::get_runtime().get_config());
 
     return hpx::util::report_errors();
 }

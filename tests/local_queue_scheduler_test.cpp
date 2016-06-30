@@ -30,7 +30,7 @@
 #include <hpx/util/lightweight_test.hpp>
 
 ///////////////////////////////////////////////////////////////////////////////
-bool test_local_scheduler(hpx::util::section& ini)
+bool test_local_queue_scheduler(hpx::util::section& ini)
 {
     // load all components as described in the configuration information
     if (!ini.has_section("hpx.plugins"))
@@ -132,10 +132,10 @@ bool test_local_scheduler(hpx::util::section& ini)
             std::shared_ptr<hpx::threads::policies::scheduler_base
                 > plugin(factory->create());
 
-            // now test for local priority scheduler plugin
-            typedef hpx::threads::policies::local_queue_scheduler<> lpq;
+            // now test for local queue scheduler plugin
+            typedef hpx::threads::policies::local_queue_scheduler<> lq;
             hpx::threads::policies::scheduler_base* base = plugin.get();
-            HPX_TEST(dynamic_cast<lpq*>(base) != NULL);
+            HPX_TEST(dynamic_cast<lq*>(base) != NULL);
         }
         catch(...) {
             // different type of factory (not "example_factory"), ignore here
@@ -148,7 +148,7 @@ bool test_local_scheduler(hpx::util::section& ini)
 int main(int argc, char* argv[])
 {
     // load plugins based on registry and configuration information
-    test_local_scheduler(hpx::get_runtime().get_config());
+    test_local_queue_scheduler(hpx::get_runtime().get_config());
 
     return hpx::util::report_errors();
 }
